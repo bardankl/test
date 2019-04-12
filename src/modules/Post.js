@@ -5,22 +5,29 @@ class Post extends Component {
     constructor(...props) {
         super(...props);
         this.state = {
-            endPoint:'http://jsonplaceholder.typicode.com/posts/',
+            endPoint: 'http://jsonplaceholder.typicode.com/posts/',
             post: '',
             id: ''
         };
 
     }
+
     static getDerivedStateFromProps(props, state) {
 
-        if(props.match.params.id!==state.id) {
-            return {id:props.match.params.id}
+        if (props.match.params.id !== state.id) {
+            return {id: props.match.params.id}
         }
     };
+
     componentDidMount() {
-        this.getPost();
-        this.setState({id: this.props.match.params.id})
+        this.getPost()
     };
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this.getPost()
+        }
+    }
+
 
     getPost = () => {
         axios.get(`${this.state.endPoint}${this.state.id}`)
@@ -30,12 +37,10 @@ class Post extends Component {
     };
 
     render() {
-        console.log(this.state.post);
         return (
             <div>
                 <h1>{this.state.post.title}</h1>
-                <h1>{this.props.match.params.id}</h1>
-                <p>{this.state.id}</p>
+
             </div>
         )
     }
