@@ -13,7 +13,6 @@ class Post extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-
         if (props.match.params.id !== state.id) {
             return {id: props.match.params.id}
         }
@@ -22,6 +21,7 @@ class Post extends Component {
     componentDidMount() {
         this.getPost()
     };
+
     componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
             this.getPost()
@@ -39,8 +39,7 @@ class Post extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.post.title}</h1>
-
+                <h1>{this.state.post.id}. {this.state.post.title}</h1>
             </div>
         )
     }

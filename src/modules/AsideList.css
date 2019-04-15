@@ -1,0 +1,8 @@
+.asideList {
+    float: left;
+    padding: 10px;
+    width: 250px;
+    background-color: aqua;
+    overflow-y: scroll;
+    height: 900px;
+}

@@ -1,17 +1,17 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+import Home from './Home'
+import './Menu.css';
 
 const Menu = ()=> {
 return (
-    <div>
+    <div className='menu'>
         <nav>
             <ul>
-                <li>
-                    <Link to={`/1`}>1</Link>
-                    <Link to={`/2`}>2</Link>
-                    <Link to={`/3`}>3</Link>
-                    <Link to={`/4`}>4</Link>
-                </li>
+                <li><Link to={`/home`}>home</Link></li>
+                <li><Link to={`/contacts`}>contacts</Link></li>
+                <li><Link to={`/about`}>about</Link></li>
+                <li><Link to={`/segments`}>segments</Link></li>
             </ul>
         </nav>
     </div>
